@@ -22,6 +22,7 @@ import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.runtime.Composable
@@ -102,6 +103,13 @@ fun CreateBudgetScreenContent(
         modifier = Modifier.fillMaxSize(),
         scaffoldState = scaffoldState,
         sheetPeekHeight = 0.dp,
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text("Add New Budget Item")
+                }
+            )
+        },
         sheetContainerColor = Color.LightGray,
         sheetContent = {
             GenericDropDownMenu<Category>(
@@ -200,7 +208,7 @@ fun CreateBudgetScreenContent(
                 onClick = onSubmit,
                 enabled = screenState.itemName.isNotBlank() && screenState.itemAmount.isNotBlank(),
             ) {
-                Text(text = "Submit")
+                Text(text = "Create A New Budget Item")
             }
         }
     }

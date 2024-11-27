@@ -56,6 +56,13 @@ class CreateBudgetScreenViewModel @Inject constructor(
                 database.expenseEntityDao.insertExpense(
                     expenseEntity = expense
                 )
+                _formState.update {
+                    it.copy(
+                        itemName = "",
+                        itemAmount = "",
+                        itemCategory = null
+                    )
+                }
                 onSuccess(expense)
             } catch (e: Exception) {
                 e.printStackTrace()

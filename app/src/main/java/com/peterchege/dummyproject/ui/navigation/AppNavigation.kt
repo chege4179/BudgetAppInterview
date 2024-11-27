@@ -6,9 +6,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.AddChart
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Receipt
+import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material.icons.outlined.AddChart
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -88,21 +92,21 @@ val bottomBarItems = listOf(
     BottomNavItem(
         name ="Budgets",
         route = "",
-        selectedIcon = Icons.Default.DateRange,
-        unselectedIcon = Icons.Default.DateRange
+        selectedIcon = Icons.Default.Receipt,
+        unselectedIcon = Icons.Default.Receipt
     ),
 
     BottomNavItem(
         name = "Add",
         route = Screens.CREATE_BUDGET_SCREEN,
-        selectedIcon = Icons.Default.Add,
-        unselectedIcon = Icons.Default.Add
+        selectedIcon = Icons.Outlined.Add,
+        unselectedIcon = Icons.Outlined.Add
     ),
     BottomNavItem(
         name ="Reports",
         route = "",
-        selectedIcon = Icons.Default.Person,
-        unselectedIcon = Icons.Outlined.Person
+        selectedIcon = Icons.Default.AddChart,
+        unselectedIcon = Icons.Outlined.AddChart
     ),
     BottomNavItem(
         name ="Account",

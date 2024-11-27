@@ -13,8 +13,5 @@ import com.peterchege.dummyproject.core.database.entity.ExpenseEntity
     exportSchema = true
 )
 abstract class BudgetAppDatabase : RoomDatabase() {
-
     abstract val expenseEntityDao: ExpenseEntityDao
-
-
 }

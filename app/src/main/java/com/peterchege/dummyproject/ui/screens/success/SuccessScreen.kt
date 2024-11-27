@@ -27,7 +27,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.peterchege.dummyproject.R
 import com.peterchege.dummyproject.core.database.entity.ExpenseEntity
+import com.peterchege.dummyproject.core.util.formatCurrency
 import com.peterchege.dummyproject.core.util.getTodaysDate
+import com.peterchege.dummyproject.core.util.safeToDouble
 import com.peterchege.dummyproject.core.util.toast
 import com.peterchege.dummyproject.ui.components.SuccessSummaryRow
 
@@ -64,7 +66,10 @@ fun SuccessScreen(
                 expenseName = "Budget Item Name",
                 expenseAmount = expenseItem.expenseName
             )
-            SuccessSummaryRow(expenseName = "Amount", expenseAmount = expenseItem.expenseAmount)
+            SuccessSummaryRow(
+                expenseName = "Amount",
+                expenseAmount = formatCurrency(expenseItem.expenseAmount.safeToDouble(), "KES")
+            )
             SuccessSummaryRow(
                 expenseName = "Category",
                 expenseAmount = expenseItem.expenseCategoryName
