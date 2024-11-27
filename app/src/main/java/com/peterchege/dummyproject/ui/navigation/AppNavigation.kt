@@ -1,5 +1,6 @@
 package com.peterchege.dummyproject.ui.navigation
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -18,11 +19,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.peterchege.dummyproject.core.database.entity.ExpenseEntity
 import com.peterchege.dummyproject.ui.screens.budget.BudgetScreen
 import com.peterchege.dummyproject.ui.screens.create.CreateBudgetScreen
 import com.peterchege.dummyproject.ui.screens.success.SuccessScreen
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
 @Composable
 fun AppNavigation(navController: NavHostController) {
     Scaffold(
@@ -49,7 +51,11 @@ fun AppNavigation(navController: NavHostController) {
         ) {
             NavHost(
                 navController = navController,
-                startDestination = Screens.BUDGET_SCREEN
+                startDestination = Screens.BUDGET_SCREEN,
+                enterTransition = { scaleInEnterTransition() },
+                exitTransition = { scaleOutExitTransition() },
+                popEnterTransition = { scaleInPopEnterTransition() },
+                popExitTransition = { scaleOutPopExitTransition() },
             ) {
                 composable(route = Screens.BUDGET_SCREEN) {
                     BudgetScreen(navController = navController)
@@ -57,11 +63,15 @@ fun AppNavigation(navController: NavHostController) {
                 composable(route = Screens.CREATE_BUDGET_SCREEN) {
                     CreateBudgetScreen(navController = navController)
                 }
-
                 composable(route = Screens.SUCCESS_SCREEN) {
-                    SuccessScreen(navController = navController)
+                    val item = navController.previousBackStackEntry?.savedStateHandle?.get<ExpenseEntity>("item")
+                    if (item != null) {
+                        SuccessScreen(navController = navController, expenseItem = item)
+                    }
+
 
                 }
+
             }
         }
     }

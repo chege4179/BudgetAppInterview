@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.hiltdagger)
+    alias(libs.plugins.kotlinParcelize)
 }
 
 android {
@@ -64,6 +66,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.coil.compose)
+    implementation(libs.androidx.material.icons.extended)
     // dagger hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
     ksp("com.google.dagger:dagger-compiler:2.51.1")
